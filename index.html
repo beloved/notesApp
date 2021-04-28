@@ -18,9 +18,22 @@
 </body>
 
 <script>
-var textElement = document.getElementById("note")
+let newNote = document.getElementById('note');
 
 function saveNote() {
-    
+    if (newNote.value == '') {
+        return alert('Enter a new note!');
+    }
+    const id = getNoteId();
+    let getNotes = getExistingNotes();
+    if(!getNotes){
+        getNotes = {};
+    }
+    getNotes[id] = newNote.value;
+    localStorage.setItem('notes', JSON.stringify(getNotes));
+    alert('Note Saved!');
 }
+
+
 </script>
+</html>
